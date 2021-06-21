@@ -9,4 +9,5 @@ module.exports = {
     ],
     "@babel/react",
   ],
+  plugins: ["@babel/plugin-proposal-optional-chaining"],
 };
