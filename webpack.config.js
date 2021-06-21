@@ -38,7 +38,7 @@ module.exports = {
   },
   resolve: {
     alias: {
-      "@/assets": resolvePath("./src/assets"),
+      "@/api": resolvePath("./src/api"),
       "@/components": resolvePath("./src/components"),
     },
     extensions: [".jsx", "..."],
@@ -48,8 +48,9 @@ module.exports = {
     new CopyPlugin({
       patterns: [
         {
-          from: resolvePath("./src/assets"),
-          to: resolvePath("./dist/assets"),
+          from: resolvePath("./public"),
+          to: resolvePath("./dist"),
+          filter: (resourcePath) => !resourcePath.endsWith("/index.html"),
         },
       ],
     }),
