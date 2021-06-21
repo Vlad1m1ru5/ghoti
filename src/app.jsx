@@ -5,11 +5,11 @@ import Api from "@/api";
 import React from "react";
 
 export default function App() {
-  const api = new Api();
+  const api = new Api(process.env.API_CONFIG);
 
   return (
     <AdminProvider>
-      <ConfigLoader fetchConfig={api.fetchConfig}>
+      <ConfigLoader loadConfig={api.fetchConfig}>
         <HelloMessage />
       </ConfigLoader>
     </AdminProvider>

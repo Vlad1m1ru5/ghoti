@@ -1,4 +1,5 @@
 const CopyPlugin = require("copy-webpack-plugin");
+const DotenvWebpackPlugin = require("dotenv-webpack");
 const HtmlWebpackPlugin = require("html-webpack-plugin");
 const resolve = require("path").resolve;
 
@@ -44,6 +45,7 @@ module.exports = {
     extensions: [".jsx", "..."],
   },
   plugins: [
+    new DotenvWebpackPlugin(),
     new HtmlWebpackPlugin({ template: resolvePath("./public/index.html") }),
     new CopyPlugin({
       patterns: [

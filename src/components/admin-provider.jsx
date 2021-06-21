@@ -3,20 +3,12 @@ import React, { createContext, useContext, useReducer } from "react";
 const AdminStateContext = createContext();
 const AdminDispatchContext = createContext();
 
-export const adminActionTypes = {
-  setAdmin: "SET_ADMIN",
-  setUsername: "SET_ADMIN_USERNAME",
-  setPassword: "SET_ADMIN_PASSWORD",
-};
+export const adminActionTypes = { setAdmin: "SET_ADMIN" };
 
 function adminReducer(state, action) {
   const { type, payload } = action;
   if (type === adminActionTypes.setAdmin) {
     return { ...state, ...payload };
-  } else if (type === adminActionTypes.setPassword) {
-    return { ...state, passwords: payload };
-  } else if (type === adminActionTypes.setUsername) {
-    return { ...state, username: payload };
   } else {
     return state;
   }

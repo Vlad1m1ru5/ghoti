@@ -4,15 +4,15 @@ import {
 } from "@/components/admin-provider";
 import React, { useEffect } from "react";
 
-export default function ConfigLoader({ fetchConfig, children }) {
-  const dispatch = useAdminDispatch();
+export default function ConfigLoader({ loadConfig, children }) {
+  const adminDispatch = useAdminDispatch();
 
   useEffect(() => {
     async function dispatchAdmin() {
-      const { admin } = await fetchConfig();
+      const { admin } = await loadConfig();
 
       if (admin !== null) {
-        dispatch({ type: adminActionTypes.setAdmin, payload: admin });
+        adminDispatch({ type: adminActionTypes.setAdmin, payload: admin });
       }
     }
 
