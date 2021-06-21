@@ -33,9 +33,17 @@ module.exports = {
         exclude: /node_modules/,
         loader: "babel-loader",
       },
+      {
+        test: /\.json/,
+        type: "application/json",
+      },
     ],
   },
   resolve: {
+    alias: {
+      assets: resolvePath("./src/assets"),
+      components: resolvePath("./src/components"),
+    },
     extensions: [".js", ".jsx", ".json", ".wasm"],
   },
   plugins: [
