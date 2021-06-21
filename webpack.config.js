@@ -1,3 +1,4 @@
+const CopyPlugin = require("copy-webpack-plugin");
 const HtmlWebpackPlugin = require("html-webpack-plugin");
 const resolve = require("path").resolve;
 
@@ -29,24 +30,28 @@ module.exports = {
   module: {
     rules: [
       {
-        test: /\.jsx?/,
+        test: /\.jsx?$/,
         exclude: /node_modules/,
         loader: "babel-loader",
-      },
-      {
-        test: /\.json/,
-        type: "application/json",
       },
     ],
   },
   resolve: {
     alias: {
-      assets: resolvePath("./src/assets"),
-      components: resolvePath("./src/components"),
+      "@/assets": resolvePath("./src/assets"),
+      "@/components": resolvePath("./src/components"),
     },
-    extensions: [".js", ".jsx", ".json", ".wasm"],
+    extensions: [".jsx", "..."],
   },
   plugins: [
     new HtmlWebpackPlugin({ template: resolvePath("./public/index.html") }),
+    new CopyPlugin({
+      patterns: [
+        {
+          from: resolvePath("./src/assets"),
+          to: resolvePath("./dist/assets"),
+        },
+      ],
+    }),
   ],
 };

@@ -3,15 +3,15 @@ import React, { createContext, useContext, useReducer } from "react";
 
 const adminInitialState = config.admin || {};
 
-const adminReducer = (action, state = adminInitialState) => {
+function adminReducer(action, state) {
   return state;
-};
+}
 
 const AdminStateContext = createContext();
 
 export function AdminProvider({ children }) {
   // TODO: add dispatch
-  const [state] = useReducer(adminReducer);
+  const [state] = useReducer(adminReducer, adminInitialState);
   return (
     <AdminStateContext.Provider value={state}>
       {children}
